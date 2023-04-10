@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sandbox Page</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="style.css">
+  <script src="sandbox.js"></script>
+  
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="sandbox.html">Sand box</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="data.html">Data</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+    <h1>Sandbox Page</h1>
+
+  <button onclick="generateRandomNumber()">Generate Random Number</button>
+  <p id="random-number-output"></p>
+  
+  
+  <button onclick="displayCurrentMinute()">Get current minute</button>
+  <div id="minute-display"></div>
+
+  <button onclick="hideElement()">Hide Element</button>
+  <div id="my-element">This element will disappear when the button is clicked.</div>
+
+  <button onclick="displayRandomLine()">Get a Random Orton Line</button>
+  <div id="line-display"></div>
+
+  <footer>
+    <p>&copy; 2023 My Website</p>
+  </footer>
+</body>
+</html>

@@ -1,80 +1,106 @@
-<!-- Bootstrap 5 CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css">
-
-<!-- Bootstrap 5 JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/js/bootstrap.min.js"></script>
-
-
-
 <!DOCTYPE html>
 <html>
+  <style>
+    .jumbotron {
+      background-image: url('https://via.placeholder.com/800x400');
+      background-size: cover;
+      color: #fff;
+      text-shadow: 1px 1px 1px #333;
+    }
+    
+    .card-img-top {
+      height: 200px;
+      object-fit: cover;
+    }
+    
+    .card {
+      margin-bottom: 30px;
+    }
+    
+
+
+  </style>
+
   <head>
-    <title>My Website</title>
+    <title>Yuxuan Zhou's website</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css">
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #f9f9f9;
-      }
-      
-      .jumbotron {
-        background-color: #fff;
-        text-align: center;
-        margin-top: 50px;
-        margin-bottom: 50px;
-        border-radius: 0;
-        box-shadow: 0px 0px 10px #ccc;
-      }
-      
-      h1 {
-        font-size: 48px;
-        color: #333;
-      }
-      
-      p {
-        font-size: 24px;
-        color: #666;
-      }
-      
-      .btn-primary {
-        background-color: #4CAF50;
-        border-color: #4CAF50;
-      }
-      
-      .btn-primary:hover {
-        background-color: #3e8e41;
-        border-color: #3e8e41;
-      }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
   </head>
 
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>My Website</title>
-    <link rel="stylesheet" href="/css/style.css">
-  </head>
+  <body>
+    <link rel="stylesheet" href="style.css">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="sandbox.html">Sand box</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="data.html">Data</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
-<body>
-  <header>
-    <h1>Hello World!</h1>
-    <h3>Yuxuan Zhou's website</h3>
-  </header>
-  
-  <main>
-    <p id="welcome"> DIGS data publish</p>
-    <p id="second"> Yuxuan first assignment</p>
-    <p id="third"> Give me 10 out of 10 please:)</p>
-  </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/js/bootstrap.min.js"></script>
+  </body>
 
-  <p>Check out our other pages:</p>
-  <ul>
-    <li><a href="data.html">Data</a></li>
-    <li><a href="contact.html">Contact</a></li>
-    <li><a href="about.html">About</a></li>
-  </ul>
+  <div class="jumbotron">
+    <div class="container">
+      <h1>Hello world! Time to read some Joe Orton</h1>
+      <p>Here you will find all kinds of interesting things.</p>
+      <p><a class="btn btn-primary btn-lg" href="about.html" role="button">Learn more &raquo;</a></p>
+    </div>
+  </div>
   
-</body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card h-100">
+          <img src="Orton.png" class="card-img-top" alt="Yuxuan's picture">
+          <div class="card-body">
+            <h5 class="card-title">Who is Joe Orton</h5>
+            <p class="card-text">Joe Orton was an English playwright known for scandalous black comedies that shocked audiences during his brief but highly influential public career from 1964 until his murder in 1967.</p>
+            <a href="data.html" class="btn btn-primary">Data</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100">
+          <img src="IMG_3033.JPG" class="card-img-top" alt="Orton's picture">
+          <div class="card-body">
+            <h5 class="card-title">Who is Yuxuan</h5>
+            <p class="card-text">Yuxuan Zhou has the background in data analysis and her current role in the University of Chicago's Data and Information Graduate Studies (DIGS) program.</p>
+            <a href="contact.html" class="btn btn-primary">Contact</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100">
+          <img src="sandbox.png" class="card-img-top" alt="Sandbox Image">
+          <div class="card-body">
+            <h5 class="card-title">Sandbox</h5>
+            <p class="card-text">Experiment with JavaScript functions and other tasks here.</p>
+            <a href="sandbox.html" class="btn btn-primary">Go to Sandbox</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
 </html>
+
 
 

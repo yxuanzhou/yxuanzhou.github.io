@@ -1,11 +1,83 @@
+
 h1 {
-    color:maroon;
-}
-z5 {
-    charm:no;
-} #second {
-    color:aquamarine;
-}
+    font-family: "American Typewriter", serif;
+    font-weight: bold;
+    color:rgba(26, 1, 1, 0.469);
+    text-align: left;
+    margin-top: 35px;
+  }
+  
 .second {
     color:lavender
 }
+
+
+  .btn {
+    background-color: maroon;
+    color: white;
+    border-color: maroon;
+  }
+
+  #csv-data {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+  }
+  
+  #csv-data th,
+  #csv-data td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+  
+  #csv-data th {
+    background-color: maroon;
+    color: white;
+  }
+  
+  #csv-data tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+/* Default styles for larger screens */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .col-md-6 {
+    float: left;
+    width: 50%;
+    padding: 15px;
+  }
+  
+  /* Styles for smaller screens */
+  @media screen and (max-width: 768px) {
+    .col-md-6 {
+      width: 100%;
+      float: none;
+    }
+  }
+  .btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    border-radius: 0.2rem;
+  }
+  
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .card-body a.btn {
+    margin-top: auto;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    border-radius: 0.2rem;
+  }
+
+ 

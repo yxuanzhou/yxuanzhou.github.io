@@ -4,60 +4,84 @@
 <!-- Bootstrap 5 JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/js/bootstrap.min.js"></script>
 
+<!-- Data Page -->
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Data</title>
-    <style>
-      table {
-        border-collapse: collapse;
-        width: 100%;
-        font-family: Arial, sans-serif;
-      }
+<head>
+  <title>Data</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+  
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="sandbox.html">Sand box</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contact.html">Contact</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="data.html">Data</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <div class="container">
+        <div class="jumbotron">
+          <div class="row align-items-center">
+            <div class="col-md-3">
+              <img src="Orton_profile.png" alt="Joe Orton profile photo" class="img-fluid rounded" style="height: 100%;">
+            </div>
+            <div class="col-md-9">
+              <h1>Joe Orton</h1>
+              <p class="lead">John Kingsley Orton (1 January 1933 – 9 August 1967), known by the pen name of Joe Orton, was an English playwright, author, and diarist. His public career, from 1964 until his murder in 1967, was short but highly influential. During this brief period he shocked, outraged, and amused audiences with his scandalous black comedies.</p>
+            </div>
+          </div>
+        </div>
+        <!-- Rest of your content here -->
+      </div>
       
-      th, td {
-        text-align: left;
-        padding: 8px;
-      }
       
-      tr:nth-child(even) {
-        background-color: #f2f2f2;
+    <h1 class="text-center">Joe Orton's top plays</h1>
+    <table id="csv-data"></table>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+  <script>
+    Papa.parse('playdata.csv', {
+      download: true,
+      header: true,
+      complete: function(results) {
+        var table = document.getElementById('csv-data');
+        var headers = Object.keys(results.data[0]);
+        var headerRow = table.insertRow(0);
+        headers.forEach(function(header) {
+          var cell = headerRow.insertCell(-1);
+          cell.innerHTML = header;
+        });
+        results.data.forEach(function(row) {
+          var dataRow = table.insertRow(-1);
+          headers.forEach(function(header) {
+            var cell = dataRow.insertCell(-1);
+            cell.innerHTML = row[header];
+          });
+        });
       }
-      
-      th {
-        background-color: #4CAF50;
-        color: white;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Data</h1>
-    <p>Here is some fake data:</p>
-    <table>
-      <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Age</th>
-        <th>Gender</th>
-      </tr>
-      <tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>25</td>
-        <td>Male</td>
-      </tr>
-      <tr>
-        <td>Jane</td>
-        <td>Doe</td>
-        <td>30</td>
-        <td>Female</td>
-      </tr>
-      <tr>
-        <td>Bob</td>
-        <td>Smith</td>
-        <td>45</td>
-        <td>Male</td>
-      </tr>
-    </table>
-  </body>
+    });
+  </script>
+    
+</body>
 </html>
