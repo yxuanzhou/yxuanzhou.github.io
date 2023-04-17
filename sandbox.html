@@ -8,7 +8,6 @@
 
   <link rel="stylesheet" href="style.css">
   <script src="sandbox.js"></script>
-  
 </head>
 
 <body>
@@ -37,6 +36,50 @@
     </div>
   </nav>
     <h1>Sandbox Page</h1>
+    
+<!-- Include Leaflet CSS and JavaScript -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/leaflet/1.0.3/leaflet.css" />
+<script src="https://cdn.jsdelivr.net/leaflet/1.0.3/leaflet.js"></script>
+
+<!-- Define a container for the map -->
+<div id="map" style="height: 500px;"></div>
+
+<!-- Add JavaScript to create and display the map -->
+<script>
+  // Define the lat lon coordinate
+  var latLng = [41.789649, -87.599702];
+
+  // Create a tile layer using Mapbox
+  var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+  var mbUrl = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}';
+  var streets = L.tileLayer(mbUrl, {
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1,
+    attribution: mbAttr,
+    accessToken: 'YOUR_ACCESS_TOKEN_HERE' // Replace with your Mapbox access token
+  });
+
+  // Create the map and add the tile layer
+  var map = L.map('map', {
+    center: latLng,
+    zoom: 16,
+    layers: [streets]
+  });
+
+  // Add a marker to the map
+  var marker = L.marker(latLng).addTo(map)
+    .bindPopup("<b>UChicago<br>Campus</b>").openPopup();
+
+  // Add a click event to the map
+  function onMapClick(e) {
+    var popup = L.popup()
+      .setLatLng(e.latlng)
+      .setContent("You clicked the map at " + e.latlng.toString())
+      .openOn(map);
+  }
+  map.on('click', onMapClick);
+</script>
 
   <button onclick="generateRandomNumber()">Generate Random Number</button>
   <p id="random-number-output"></p>
@@ -50,9 +93,27 @@
 
   <button onclick="displayRandomLine()">Get a Random Orton Line</button>
   <div id="line-display"></div>
-
+  <button onclick="showAlert()">Don't Click me</button>
+	<div>
+		<h1>Sort Array</h1>
+		<label for="arrayInput">Enter array:</label>
+		<input type="text" id="arrayInput">
+		<button onclick="parseArray()">Sort array</button>
+		<div id="result"></div>
+	</div>
+	<div>
+		<h1>Wikipedia API</h1>
+		<label for="searchTerm">Enter search term:</label>
+		<input type="text" id="searchTerm">
+		<button onclick="getWikiPage()">Search</button>
+		<div id="result"></div>
+	</div>
   <footer>
     <p>&copy; 2023 My Website</p>
   </footer>
+  
+  <div id="results"></div>
+
+
 </body>
 </html>
