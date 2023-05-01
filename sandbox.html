@@ -8,6 +8,7 @@
 
   <link rel="stylesheet" href="style.css">
   <script src="sandbox.js"></script>
+  <link rel="stylesheet" href="css/map.css">
 </head>
 
 <body>
@@ -38,11 +39,12 @@
     <h1>Sandbox Page</h1>
     
 <!-- Include Leaflet CSS and JavaScript -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/leaflet/1.0.3/leaflet.css" />
-<script src="https://cdn.jsdelivr.net/leaflet/1.0.3/leaflet.js"></script>
+<script src='https://api.mapbox.com/mapbox.js/v3.2.1/mapbox.js'></script>
+<link href='https://api.mapbox.com/mapbox.js/v3.2.1/mapbox.css' rel='stylesheet' />
 
 <!-- Define a container for the map -->
-<div id="map" style="height: 500px;"></div>
+<div class='sidebar pad2'>Listing</div>
+<div id='map' class='map pad2'>Map</div>
 
 <!-- Add JavaScript to create and display the map -->
 <script>
@@ -57,7 +59,7 @@
     tileSize: 512,
     zoomOffset: -1,
     attribution: mbAttr,
-    accessToken: 'YOUR_ACCESS_TOKEN_HERE' // Replace with your Mapbox access token
+    accessToken: 'pk.eyJ1IjoiY29vbHVvYm9tYXAiLCJhIjoiY2xoNTN2NHNqMDFldDN1cWVndThtdDZiaiJ9.hwhhv-xYXb62Oq87ih_Geg' // Replace with your Mapbox access token
   });
 
   // Create the map and add the tile layer
@@ -81,6 +83,8 @@
   map.on('click', onMapClick);
 </script>
 
+
+
   <button onclick="generateRandomNumber()">Generate Random Number</button>
   <p id="random-number-output"></p>
   
@@ -90,24 +94,39 @@
 
   <button onclick="hideElement()">Hide Element</button>
   <div id="my-element">This element will disappear when the button is clicked.</div>
-
-  <button onclick="displayRandomLine()">Get a Random Orton Line</button>
+  
   <div id="line-display"></div>
   <button onclick="showAlert()">Don't Click me</button>
+ 
+  <!-- Add sort array -->
 	<div>
 		<h1>Sort Array</h1>
-		<label for="arrayInput">Enter array:</label>
-		<input type="text" id="arrayInput">
+    <p>Enter comma-separated numbers:</p>
+    <input type="text" id="arrayInput" placeholder="e.g. 3,7,1,9">
 		<button onclick="parseArray()">Sort array</button>
 		<div id="result"></div>
+    <script>
+      function parseArray() {
+        const input = document.getElementById("arrayInput").value;
+        const array = input.split(",").map(Number);
+        const sortedArray = array.sort((a, b) => a - b);
+        const resultDiv = document.getElementById("result");
+        resultDiv.innerHTML = `Sorted array: [${sortedArray}]`;
+      }
+    </script>
 	</div>
+
+ <!-- Add Wikipedia API -->
 	<div>
 		<h1>Wikipedia API</h1>
 		<label for="searchTerm">Enter search term:</label>
 		<input type="text" id="searchTerm">
 		<button onclick="getWikiPage()">Search</button>
-		<div id="result"></div>
-	</div>
+    <div id="searchResults"></div>
+  </div>
+
+
+
   <footer>
     <p>&copy; 2023 My Website</p>
   </footer>
@@ -116,4 +135,3 @@
 
 
 </body>
-</html>

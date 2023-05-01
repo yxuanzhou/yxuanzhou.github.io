@@ -55,6 +55,10 @@ async function getWikipediaSummary(searchTerm) {
     console.error(error);
   }
 }
+
+
+
+
 function parseArray() {
   const input = document.getElementById("arrayInput").value;
   const array = input.split(",").map(Number);
@@ -63,31 +67,12 @@ function parseArray() {
   resultDiv.innerHTML = `Sorted array: [${sortedArray}]`;
 }
 
-function getWikiPage() {
-  const searchTerm = document.getElementById("searchTerm").value;
-  const apiUrl = `https://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts&exintro=true&titles=${searchTerm}`;
-
-  fetch(apiUrl)
-    .then(response => response.json())
-    .then(data => {
-      const pages = data.query.pages;
-      const pageId = Object.keys(pages)[0];
-      const extract = pages[pageId].extract;
-      const resultDiv = document.getElementById("result");
-      resultDiv.innerHTML = extract;
-    })
-    .catch(error => {
-      console.error(error);
-      const resultDiv = document.getElementById("result");
-      resultDiv.innerHTML = "Error: could not retrieve data from Wikipedia API";
-    });
-}
-
 function mapLoad() {
   // Define the lat lon coordinate
   var latLng = [41.789649, -87.599702];
-  var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
-  var mbUrl = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpeiY4NXVycTA2emYycXBndHRacmZ3N3qifQ.rJcFIG214AriISLbB6B5aw';
+  var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+  'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+  mbUrl = 'access_token=pk.eyJ1IjoiY29vbHVvYm9tYXAiLCJhIjoiY2xoNTN2NHNqMDFldDN1cWVndThtdDZiaiJ9.hwhhv-xYXb62Oq87ih_Geg';
   var grayscale = L.tileLayer(mbUrl, { id: 'mapbox/light-v9', tileSize: 512, zoomOffset: -1, attribution: mbAttr }),
       streets = L.tileLayer(mbUrl, { id: 'mapbox/streets-v11', tileSize: 512, zoomOffset: -1, attribution: mbAttr });
   var map = L.map('map', {
@@ -112,4 +97,35 @@ function mapLoad() {
       .openOn(map);
   }
   map.on('click', onMapClick);
+}
+
+function getWikiPage() {
+  const searchTerm = document.getElementById("searchTerm").value;
+  const apiUrl = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(searchTerm)}`;
+
+  fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => {
+      // Check if the properties exist in the API response
+      if (!data.hasOwnProperty("title") || !data.hasOwnProperty("description") || !data.hasOwnProperty("thumbnail")) {
+        throw new Error("Invalid API response");
+      }
+
+      // Extract the relevant information from the API response
+      const title = data.title;
+      const description = data.description;
+      const imageUrl = data.thumbnail.source;
+
+      // Display the information on your webpage
+      const resultDiv = document.getElementById("result");
+      resultDiv.innerHTML = `
+        <h2>${title}</h2>
+        <p>${description}</p>
+        <img src="${imageUrl}" alt="${title}">`;
+    })
+    .catch(error => {
+      console.error(error);
+      const resultDiv = document.getElementById("result");
+      resultDiv.innerHTML = "Error: could not retrieve data from Wikipedia API";
+    });
 }
