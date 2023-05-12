@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="sandbox.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+
+    <title>Group 02 Digital Chalkboard for the Music API.</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container-fluid {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            border-radius: 5px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            border-radius: 5px;
+        }
+
+        .btn-primary:hover {
+            background-color: #0069d9;
+            border-color: #0062cc;
+        }
+
+        .result {
+            margin-top: 20px;
+        }
+
+        #titleHeader {
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        #albumTable {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+<<div class="container-fluid mt-2 d-flex flex-column">
+    <h2>Music Search</h2>
+    <form class="col-md-10">
+        <div class="col">
+            <input type="text" id="searchInput" class="form-control" placeholder="Enter a band name"
+                onkeypress="handleKeyPress(event)">
+        </div>
+    </form>
+    <button type="button" class="col-md-10 btn btn-primary my-3" onclick="search()">Search by band</button>
+    <div class="container result">
+        <ul id="resultList"></ul>
+    </div>
+    <h3 id="titleHeader"></h3>
+    <table class="table table-striped" id="albumTable" style="display: none;">
+        <thead class="thead-dark">
+            <tr>
+                <th>Release Date</th>
+                <th>Title</th>
+                <th>Country</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+</body>
+
+<body>
+<div class="container-fluid mt-2 d-flex flex-column">
+    <h2>Instrument Search</h2>
+    <form class="col-md-10">
+        <div class="col">
+            <input type="text" id="instrumentInput" class="form-control" placeholder="Enter an instrument">
+        </div>
+    </form>
+    <button type="button" class="col-md-10 btn btn-primary my-3" onclick="searchByInstrument()">Search by Instrument</button>
+    <div class="container result">
+        <ul id="resultList"></ul>
+    </div>
+    <h3 id="titleHeader"></h3>
+    <table class="table table-striped" id="albumTable" style="display: none;">
+    </table>
+</div>
+</body>
