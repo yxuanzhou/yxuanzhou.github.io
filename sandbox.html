@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Bootstrap 5 CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css">
+  <!-- Bootstrap 5 JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/js/bootstrap.min.js"></script>
+  
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sandbox Page</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css">
-
-  <link rel="stylesheet" href="style.css">
   <script src="sandbox.js"></script>
-  <link rel="stylesheet" href="css/map.css">
 </head>
 
 <body>
+  <link rel="stylesheet" href="style.css">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="sandbox.html">Sand box</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -32,78 +33,45 @@
           <li class="nav-item">
             <a class="nav-link" href="data.html">Data</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="sandbox.html">Sand box</a>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
-    <h1>Sandbox Page</h1>
-    
-<!-- Include Leaflet CSS and JavaScript -->
-<script src='https://api.mapbox.com/mapbox.js/v3.2.1/mapbox.js'></script>
-<link href='https://api.mapbox.com/mapbox.js/v3.2.1/mapbox.css' rel='stylesheet' />
-
-<!-- Define a container for the map -->
-<div class='sidebar pad2'>Listing</div>
-<div id='map' class='map pad2'>Map</div>
-
-<!-- Add JavaScript to create and display the map -->
-<script>
-  // Define the lat lon coordinate
-  var latLng = [41.789649, -87.599702];
-
-  // Create a tile layer using Mapbox
-  var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
-  var mbUrl = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}';
-  var streets = L.tileLayer(mbUrl, {
-    id: 'mapbox/streets-v11',
-    tileSize: 512,
-    zoomOffset: -1,
-    attribution: mbAttr,
-    accessToken: 'pk.eyJ1IjoiY29vbHVvYm9tYXAiLCJhIjoiY2xoNTN2NHNqMDFldDN1cWVndThtdDZiaiJ9.hwhhv-xYXb62Oq87ih_Geg' // Replace with your Mapbox access token
-  });
-
-  // Create the map and add the tile layer
-  var map = L.map('map', {
-    center: latLng,
-    zoom: 16,
-    layers: [streets]
-  });
-
-  // Add a marker to the map
-  var marker = L.marker(latLng).addTo(map)
-    .bindPopup("<b>UChicago<br>Campus</b>").openPopup();
-
-  // Add a click event to the map
-  function onMapClick(e) {
-    var popup = L.popup()
-      .setLatLng(e.latlng)
-      .setContent("You clicked the map at " + e.latlng.toString())
-      .openOn(map);
-  }
-  map.on('click', onMapClick);
-</script>
 
 
-
-  <button onclick="generateRandomNumber()">Generate Random Number</button>
+<div class="container mt-3">
+  <button class="btn btn-primary my-3" onclick="generateRandomNumber()">Generate Random Number</button>
   <p id="random-number-output"></p>
+</div>
   
-  
-  <button onclick="displayCurrentMinute()">Get current minute</button>
-  <div id="minute-display"></div>
 
-  <button onclick="hideElement()">Hide Element</button>
+<div class="container mt-3">
+  <button class="btn btn-primary my-3" onclick="displayCurrentMinute()">Get current minute</button>
+  <div id="minute-display"></div>
+</div>
+
+
+<div class="container mt-3">
+  <button class="btn btn-primary my-3" onclick="hideElement()">Hide Element</button>
   <div id="my-element">This element will disappear when the button is clicked.</div>
-  
+</div>
+
+
+<div class="container mt-3">
   <div id="line-display"></div>
-  <button onclick="showAlert()">Don't Click me</button>
- 
+  <button onclick="showAlert()" class="btn btn-primary my-3">Don't Click me</button>
+</div>
+
   <!-- Add sort array -->
-	<div>
-		<h1>Sort Array</h1>
-    <p>Enter comma-separated numbers:</p>
-    <input type="text" id="arrayInput" placeholder="e.g. 3,7,1,9">
-		<button onclick="parseArray()">Sort array</button>
+
+
+	<div class="container mt-3">
+    <div id="title">Sort Array: </div>
+    <input type="text" id="arrayInput" placeholder="Enter comma-separated numbers: e.g. 3,7,1,9">
+		<button class="btn btn-primary my-3" onclick="parseArray()">Sort array</button>
 		<div id="result"></div>
     <script>
       function parseArray() {
@@ -116,20 +84,25 @@
     </script>
 	</div>
 
- <!-- Add Wikipedia API -->
-	<div>
-		<h1>Wikipedia API</h1>
-		<label for="searchTerm">Enter search term:</label>
-		<input type="text" id="searchTerm">
-		<button onclick="getWikiPage()">Search</button>
-    <div id="result"></div>
-  </div>
+
+<div class="container mt-3">
+  <a href="wikiApi.html">
+    <button class="btn btn-primary my-3">Go to Wiki API</button>
+  </a>
+</div>
 
 
+<div class="container mt-3">
+  <a href="music.html">
+    <button class="btn btn-primary my-3">Go to Music API</button>
+  </a>
+</div>
 
-  <footer>
-    <p>&copy; 2023 My Website</p>
-  </footer>
+<div class="container mt-3">
+  <a href="mapAPI.html">
+    <button class="btn btn-primary my-3">Go to MAP API</button>
+  </a>
+</div>
   
   <div id="results"></div>
 

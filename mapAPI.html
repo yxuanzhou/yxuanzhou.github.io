@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Bootstrap 5 CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css">
+  <!-- Bootstrap 5 JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/js/bootstrap.min.js"></script>
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/map.css">
+  <script src="sandbox.js"></script>
+</head>
+
+<body>
+
+<!-- Include Leaflet CSS and JavaScript -->
+<script src='https://api.mapbox.com/mapbox.js/v3.2.1/mapbox.js'></script>
+<link href='https://api.mapbox.com/mapbox.js/v3.2.1/mapbox.css' rel='stylesheet' />
+
+<!-- Define a container for the map -->
+<div class="container mt-3">
+  <div id='map' class='map pad2'>Map</div>
+</div>
+
+
+<!-- Add JavaScript to create and display the map -->
+<script>
+  // Define the lat lon coordinate
+  var latLng = [41.789649, -87.599702];
+
+  // Create a tile layer using Mapbox
+  var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+  var mbUrl = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}';
+  var streets = L.tileLayer(mbUrl, {
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1,
+    attribution: mbAttr,
+    accessToken: 'pk.eyJ1IjoiY29vbHVvYm9tYXAiLCJhIjoiY2xoNTN2NHNqMDFldDN1cWVndThtdDZiaiJ9.hwhhv-xYXb62Oq87ih_Geg' // Replace with your Mapbox access token
+  });
+
+  // Create the map and add the tile layer
+  var map = L.map('map', {
+    center: latLng,
+    zoom: 16,
+    layers: [streets]
+  });
+
+  // Add a marker to the map
+  var marker = L.marker(latLng).addTo(map)
+    .bindPopup("<b>UChicago<br>Campus</b>").openPopup();
+
+  // Add a click event to the map
+  function onMapClick(e) {
+    var popup = L.popup()
+      .setLatLng(e.latlng)
+      .setContent("You clicked the map at " + e.latlng.toString())
+      .openOn(map);
+  }
+  map.on('click', onMapClick);
+</script>
+
+<div class="container mt-3">
+    <a href="sandbox.html">
+      <button class="btn btn-primary my-3">Go to sand box page</button>
+    </a>
+  </div>
+  
+<div class="container mt-3">
+    <a href="index.html">
+      <button class="btn btn-primary my-3">Go to home page</button>
+    </a>
+  </div>
+
+</body>

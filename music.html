@@ -21,67 +21,65 @@
         crossorigin=""></script>
 
     <title>Group 02 Digital Chalkboard for the Music API.</title>
-    <style>
-        body {
-            background-color: #f8f9fa;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-        }
-
-        .container-fluid {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        h2 {
-            font-size: 28px;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 20px;
-        }
-
-        .form-control {
-            border-radius: 5px;
-        }
-
-        .btn-primary {
-            background-color: #007bff;
-            border-color: #007bff;
-            border-radius: 5px;
-        }
-
-        .btn-primary:hover {
-            background-color: #0069d9;
-            border-color: #0062cc;
-        }
-
-        .result {
-            margin-top: 20px;
-        }
-
-        #titleHeader {
-            font-size: 22px;
-            font-weight: bold;
-            margin-top: 20px;
-        }
-
-        #albumTable {
-            margin-top: 20px;
-        }
-    </style>
+    
 </head>
+<style>
+    .jumbotron {
+      background-image: url('https://via.placeholder.com/800x400');
+      background-size: cover;
+      color: #fff;
+      text-shadow: 1px 1px 1px #333;
+    }
+    
+    .card-img-top {
+      height: 200px;
+      object-fit: cover;
+    }
+    
+    .card {
+      margin-bottom: 30px;
+    }
+
+  </style>
 
 <body>
-<<div class="container-fluid mt-2 d-flex flex-column">
-    <h2>Music Search</h2>
+<link rel="stylesheet" href="style.css">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="data.html">Data</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="sandbox.html">Sand box</a>
+        </li>
+        </ul>
+    </div>
+    </div>
+</nav>
+
+<div class="container mt-3">
+    <div id="title">Music Search</div>
     <form class="col-md-10">
         <div class="col">
             <input type="text" id="searchInput" class="form-control" placeholder="Enter a band name"
                 onkeypress="handleKeyPress(event)">
         </div>
     </form>
-    <button type="button" class="col-md-10 btn btn-primary my-3" onclick="search()">Search by band</button>
+    <button type="button" class="btn btn-primary my-3" onclick="search()">Search by band</button>
     <div class="container result">
         <ul id="resultList"></ul>
     </div>
@@ -100,14 +98,15 @@
 </body>
 
 <body>
-<div class="container-fluid mt-2 d-flex flex-column">
-    <h2>Instrument Search</h2>
+    
+<div class="container mt-3">
+    <div id="title">Instrument Search</div>
     <form class="col-md-10">
         <div class="col">
             <input type="text" id="instrumentInput" class="form-control" placeholder="Enter an instrument">
         </div>
     </form>
-    <button type="button" class="col-md-10 btn btn-primary my-3" onclick="searchByInstrument()">Search by Instrument</button>
+    <button type="button" class="btn btn-primary my-3" onclick="searchByInstrument()">Search by Instrument</button>
     <div class="container result">
         <ul id="resultList"></ul>
     </div>
